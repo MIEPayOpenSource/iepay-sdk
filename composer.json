@@ -1,0 +1,16 @@
+{
+    "name": "iepay/iepay-sdk",
+    "description": "Iepay PHP SDK version 3.x",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "IEPaySDK\\":"src"
+        }
+    },
+    "require": {
+        "laravel/framework": "~5.5|~6.0|~7.0|~8.0",
+        "php": ">=7.1.0"
+    }
+}
