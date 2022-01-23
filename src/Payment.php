@@ -22,8 +22,8 @@ class Payment
     {
         $this->mid = getenv('MYPAY_ID');
         $this->apiKey = getenv('MYPAY_KEY');
-        $this->returnUrl = empty($returnUrl) ? $returnUrl : getenv('MYPAY_RETURN_URL');
-        $this->notifyUrl = empty($notifyUrl) ? $notifyUrl : getenv('MYPAY_NOTIFY_URL');
+        $this->returnUrl = !empty($returnUrl) ? $returnUrl : getenv('MYPAY_RETURN_URL');
+        $this->notifyUrl = !empty($notifyUrl) ? $notifyUrl : getenv('MYPAY_NOTIFY_URL');
         $this->payType = $payType;
 
         if(getenv('MYPAY_MODE') == 'test')
@@ -49,7 +49,7 @@ class Payment
         $signatureMethod = 'signature' . strtoupper($this->signType);
         $params['sign'] = Signature::getInstance()->$signatureMethod($params, $this->apiKey);
 
-        $url = $this->apiEndpoint . __METHOD__;
+        $url = $this->apiEndpoint . 'payment';
         return Request::request($url, $params, 'post');
     }
 
@@ -63,8 +63,9 @@ class Payment
 
         $signatureMethod = 'signature' . strtoupper($this->signType);
         $params['sign'] = Signature::getInstance()->$signatureMethod($params, $this->apiKey);
+        $url = $this->apiEndpoint . 'refund';
 
-        return Request::request($this->endpoints[__METHOD__], $params, 'post');
+        return Request::request($url, $params, 'post');
     }
 
     public function query($orderId)
@@ -75,8 +76,9 @@ class Payment
 
         $signatureMethod = 'signature' . strtoupper($this->signType);
         $params['sign'] = Signature::getInstance()->$signatureMethod($params, $this->apiKey);
+        $url = $this->apiEndpoint . 'query';
 
-        return Request::request($this->endpoints[__METHOD__], $params, 'get');
+        return Request::request($url, $params, 'get');
     }
 
     private function commomParams() : array
