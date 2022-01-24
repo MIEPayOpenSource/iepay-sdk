@@ -58,7 +58,7 @@ class Payment
         $params = array_merge([
             'amount' => $amount,
             'out_trade_no' => $orderId,
-            'before_charge' => false,
+            'before_charge' => 0,
         ], $this->commomParams());
 
         $signatureMethod = 'signature' . strtoupper($this->signType);

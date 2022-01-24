@@ -6,7 +6,8 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "IEPaySDK\\":"src"
+            "IEPaySDK\\":"src",
+            "IEPaySDK\\Lib":"src/lib"
         }
     },
     "require": {
