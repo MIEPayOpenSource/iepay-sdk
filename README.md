@@ -167,7 +167,8 @@ $response = Payment::make($paymentType)->refund($orderId, $amount);
 
 
 ## Pay Type Table / 支付类别表
-|Code|Pay Types|Desc|Status|
+|**Code**|**Pay Types**|**Desc**|**Status**|
+|:-----|:-----------------------|:--------------------------------------|:-------|
 |IE0012|Alipay Online PC Qrcode|支付宝PC二维码(PC收银页面)|已开通|
 |IE0013|Alipay Online Wap Qrcode|支付宝H5手机端二维码(Wap 收银页面)|已开通|
 |IE0015|Alipay App Direct|支付宝In-APP支付(native开发，需接入支付宝APP-SDK)|已开通|
