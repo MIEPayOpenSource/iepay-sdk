@@ -32,14 +32,22 @@ class Payment
         }
     }
 
-    public function payment($orderId, $amount, $title, $detail = '')
+    /**
+     * make iepay order
+     *
+     * @param   string  $orderId
+     * @param   int     $amount
+     * @param   string  $subject
+     * @param   string  $detail
+     */
+    public function payment(string $orderId, int $amount, string $subject, string $detail = '')
     {
         $params = array_merge([
             'amount' => $amount,
             'pay_type' => $this->payType,
             'currency' => $this->currency,
             'out_trade_no' => $orderId,
-            'goods' => $title,
+            'goods' => $subject,
             'goods_detail' => $detail,
             'return_url' => $this->returnUrl,
             'notify_url' => $this->notifyUrl,
@@ -53,7 +61,13 @@ class Payment
         return Request::request($url, $params, 'post');
     }
 
-    public function refund($orderId, $amount = null)
+    /**
+     * Refund an order
+     *
+     * @param   string  $orderId
+     * @param   int     $amount
+     */
+    public function refund(string $orderId, int $amount = null)
     {
         $params = array_merge([
             'amount' => $amount,
@@ -68,7 +82,12 @@ class Payment
         return Request::request($url, $params, 'post');
     }
 
-    public function query($orderId)
+    /**
+     * Query order status
+     *
+     * @param   string  $orderId
+     */
+    public function query(string $orderId)
     {
         $params = array_merge([
             'out_trade_no' => $orderId,
@@ -81,6 +100,9 @@ class Payment
         return Request::request($url, $params, 'get');
     }
 
+    /**
+     * Common param
+     */
     private function commomParams() : array
     {
         return [
@@ -90,7 +112,7 @@ class Payment
     }
 
     /**
-     * generate object
+     * Generate object
      */
     public static function make(...$params)
     {
