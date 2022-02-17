@@ -20,16 +20,27 @@ class Payment
     
     public function __construct(string $payType, string $returnUrl = '', string $notifyUrl = '')
     {
-        $this->mid = getenv('MYPAY_ID');
-        $this->apiKey = getenv('MYPAY_KEY');
-        $this->returnUrl = !empty($returnUrl) ? $returnUrl : getenv('MYPAY_RETURN_URL');
-        $this->notifyUrl = !empty($notifyUrl) ? $notifyUrl : getenv('MYPAY_NOTIFY_URL');
+        $this->setMerchantConfig(getenv('MYPAY_ID'), getenv('MYPAY_KEY'));
+        $this->returnUrl = $returnUrl ?? getenv('MYPAY_RETURN_URL');
+        $this->notifyUrl = $notifyUrl ?? getenv('MYPAY_NOTIFY_URL');
         $this->payType = $payType;
 
         if(getenv('MYPAY_MODE') == 'test')
         {
             $this->apiEndpoint = 'https://local.miepay.xyz/api/v3/';
         }
+    }
+
+    /**
+     * customize mid
+     *
+     * @param   int      $mid
+     */
+    public function setMerchantConfig(int $mid, string $apiKey) : Payment
+    {
+        $this->mid = $mid;
+        $this->apiKey = $apiKey;
+        return $this;
     }
 
     /**
