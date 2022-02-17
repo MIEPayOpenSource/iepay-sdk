@@ -1,5 +1,5 @@
 # iepay-sdk
-Iepay PHP SDK version 3.x.
+Iepay PHP SDK version 3.x APIs.
 
 ## Installation / 安装
 ```bash
