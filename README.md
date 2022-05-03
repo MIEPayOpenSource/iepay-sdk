@@ -176,6 +176,6 @@ $response = Payment::make($paymentType)->refund($orderId, $amount);
 |IE0022|Wechat Wap Qrcode|微信WAP支付|已开通|
 |IE0025|Wechat App Direct|微信In-APP支付|已开通|
 |IE0026|Wechat Mini Direct|微信小程序支付|已开通|
-|IE0036|POLI Pay|POLI PC 支付|已开通|
-|IE0041|Union Secure Online Payment|银联Secure线上支付|新开通|
+|IE0036|Union Secure Online Payment|银联Secure线上支付|新开通|
+|IE0041|POLI Pay|POLI PC 支付|已开通|
 |IE0061|Windcave Host Page Payment|Windcave PC 支付|即将开通|

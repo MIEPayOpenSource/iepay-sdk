@@ -24,11 +24,6 @@ class Payment
         $this->returnUrl = $returnUrl ?? getenv('MYPAY_RETURN_URL');
         $this->notifyUrl = $notifyUrl ?? getenv('MYPAY_NOTIFY_URL');
         $this->payType = $payType;
-
-        if(getenv('MYPAY_MODE') == 'test')
-        {
-            $this->apiEndpoint = 'https://local.miepay.xyz/api/v3/';
-        }
     }
 
     /**
