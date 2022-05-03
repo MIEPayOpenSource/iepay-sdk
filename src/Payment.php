@@ -21,8 +21,8 @@ class Payment
     public function __construct(string $payType, string $returnUrl = '', string $notifyUrl = '')
     {
         $this->setMerchantConfig(getenv('MYPAY_ID'), getenv('MYPAY_KEY'));
-        $this->returnUrl = $returnUrl ?? getenv('MYPAY_RETURN_URL');
-        $this->notifyUrl = $notifyUrl ?? getenv('MYPAY_NOTIFY_URL');
+        $this->returnUrl = empty($returnUrl) ?? getenv('MYPAY_RETURN_URL');
+        $this->notifyUrl = empty($notifyUrl) ?? getenv('MYPAY_NOTIFY_URL');
         $this->payType = $payType;
     }
 
