@@ -72,7 +72,7 @@ class Signature
     {
         $requiredColumn = [
             'mid', 'total_fee', 'currency', 'goods', 'goods_detail', 'out_trade_no', 'pay_type',
-            'tid', 'amount', 'out_trade_no', 'return_url', 'notify_url', 'fail_url', 'expired', 'before_charge', 'is_mobile'
+            'tid', 'amount', 'return_url', 'notify_url', 'fail_url', 'expired', 'before_charge'
         ];
         foreach($params as $key => $val)
         {
